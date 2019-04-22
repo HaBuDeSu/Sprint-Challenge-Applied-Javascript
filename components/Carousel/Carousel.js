@@ -11,6 +11,7 @@ class Carousel {
     this.currentIndex = 0;
     this.currentImg = this.carouselElement.querySelector(`img[data-tab='${this.currentIndex}']`);
     this.currentImg.setAttribute("style", "display: flex");
+    this.carouselInterval = setInterval(this.selectNext.bind(this), 6000);
   }
 
   selectNext () {
@@ -18,6 +19,8 @@ class Carousel {
     this.carouselElement.querySelectorAll("img").forEach(img => img.setAttribute("style", "display: none"));
     this.currentImg = this.carouselElement.querySelector(`img[data-tab='${this.currentIndex}']`);
     this.currentImg.setAttribute("style", "display: flex");
+    clearInterval(this.carouselInterval);
+    this.carouselInterval = setInterval(this.selectNext.bind(this), 6000);
   };
 
   selectPrevious () {
@@ -25,6 +28,8 @@ class Carousel {
     this.carouselElement.querySelectorAll("img").forEach(img => img.setAttribute("style", "display: none"));
     this.currentImg = this.carouselElement.querySelector(`img[data-tab='${this.currentIndex}']`);
     this.currentImg.setAttribute("style", "display: flex");
+    clearInterval(this.carouselInterval);
+    this.carouselInterval = setInterval(this.selectNext.bind(this), 6000);
   };
 }
 
